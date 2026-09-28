@@ -159,6 +159,9 @@ section {
   width: 1200px;
   margin: auto;
 }
+.mobile-right i {
+  margin-left: 280px;
+}
 
 #overview > div {
   display: flex;

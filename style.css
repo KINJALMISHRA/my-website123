@@ -455,19 +455,42 @@ p {
 }
 
 /* ---------- Carousel (parent = 1200px) ---------- */
+/* ---------- Carousel (parent = 1200px) ---------- */
 .carousal {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  --per-view: 3; /* cards visible on desktop */
+  --gap: 30px;
 }
 
-.carousal .swiper {
+.amenity-viewport {
   overflow: hidden;
   padding: 2px; /* stops card borders being clipped */
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.carousal .swiper-slide {
-  height: auto;
+.amenity-viewport.dragging {
+  cursor: grabbing;
+}
+
+.amenity-track {
+  display: flex;
+  gap: var(--gap);
+  transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+
+.amenity-track.no-anim {
+  transition: none;
+}
+
+.amenity-slide {
+  flex: 0 0 calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
+  min-width: 0;
 }
 
 .amenity-card {
@@ -486,6 +509,8 @@ p {
   object-fit: cover;
   display: block;
   background: #dfe8d8;
+  pointer-events: none; /* smooth dragging */
+  -webkit-user-drag: none;
 }
 
 .amenity-card h3 {
@@ -497,6 +522,12 @@ p {
   line-height: 1.25;
 }
 
+@media (max-width: 767px) {
+  .carousal {
+    --per-view: 1;
+    --gap: 20px;
+  }
+}
 /* ---------- Arrows ---------- */
 .amenity-nav {
   display: flex;

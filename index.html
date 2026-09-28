@@ -340,9 +340,10 @@
 
       <!-- Amenities Carousel -->
 
-      <div class="carousal">
-        <div class="swiper amenities-swiper">
-          <div class="swiper-wrapper" id="amenityCards"></div>
+      <!-- Amenities Carousel -->
+      <div class="carousal" id="amenityCarousel">
+        <div class="amenity-viewport">
+          <div class="amenity-track" id="amenityCards"></div>
         </div>
 
         <div class="amenity-nav">
@@ -377,7 +378,6 @@
           </button>
         </div>
       </div>
-
       <div class="amenities">
         <!-- Interior Amenities -->
 
@@ -837,21 +837,22 @@
       const fallback = (i) => `https://picsum.photos/seed/amenity${i}/700/700`;
 
       // Generate amenity cards
+      // Generate amenity cards
       document.getElementById("amenityCards").innerHTML = amenities
         .map(
           (a, i) => `
-            <div class="swiper-slide">
-              <article class="amenity-card">
-                <img
-                  src="${a.img}"
-                  alt="${a.title}"
-                  loading="lazy"
-                  onerror="this.onerror=null;this.src='${fallback(i)}'"
-                />
-                <h3>${a.title}</h3>
-              </article>
-            </div>
-          `,
+      <div class="amenity-slide">
+        <article class="amenity-card">
+          <img
+            src="${a.img}"
+            alt="${a.title}"
+            draggable="false"
+            onerror="this.onerror=null;this.src='${fallback(i)}'"
+          />
+          <h3>${a.title}</h3>
+        </article>
+      </div>
+    `,
         )
         .join("");
 
@@ -884,6 +885,88 @@
           },
         },
       });
+
+      // ---------- Amenities carousel ----------
+      (function () {
+        const root = document.getElementById("amenityCarousel");
+        const viewport = root.querySelector(".amenity-viewport");
+        const track = root.querySelector(".amenity-track");
+        const slides = track.children;
+        let index = 0;
+        let startX = 0;
+        let dragging = false;
+        let dragDelta = 0;
+
+        const perView = () =>
+          parseInt(getComputedStyle(root).getPropertyValue("--per-view")) || 1;
+        const maxIndex = () => Math.max(0, slides.length - perView());
+        const step = () =>
+          slides.length > 1
+            ? slides[1].offsetLeft - slides[0].offsetLeft
+            : slides[0].offsetWidth;
+
+        function render(extra = 0) {
+          track.style.transform = `translateX(${-index * step() + extra}px)`;
+        }
+
+        function next() {
+          index = index >= maxIndex() ? 0 : index + 1; // wrap to first
+          render();
+        }
+
+        function prev() {
+          index = index <= 0 ? maxIndex() : index - 1; // wrap to last
+          render();
+        }
+
+        root.querySelector(".next").addEventListener("click", next);
+        root.querySelector(".prev").addEventListener("click", prev);
+
+        // Drag / swipe
+        viewport.addEventListener("pointerdown", (e) => {
+          dragging = true;
+          startX = e.clientX;
+          dragDelta = 0;
+          track.classList.add("no-anim");
+          viewport.classList.add("dragging");
+          viewport.setPointerCapture(e.pointerId);
+        });
+
+        viewport.addEventListener("pointermove", (e) => {
+          if (!dragging) return;
+          dragDelta = e.clientX - startX;
+          render(dragDelta);
+        });
+
+        function endDrag() {
+          if (!dragging) return;
+          dragging = false;
+          track.classList.remove("no-anim");
+          viewport.classList.remove("dragging");
+          if (dragDelta < -50) next();
+          else if (dragDelta > 50) prev();
+          else render();
+        }
+
+        viewport.addEventListener("pointerup", endDrag);
+        viewport.addEventListener("pointercancel", endDrag);
+
+        // Keyboard
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowRight") next();
+          if (e.key === "ArrowLeft") prev();
+        });
+
+        // Keep position correct on resize
+        window.addEventListener("resize", () => {
+          index = Math.min(index, maxIndex());
+          track.classList.add("no-anim");
+          render();
+          requestAnimationFrame(() => track.classList.remove("no-anim"));
+        });
+
+        render();
+      })();
     </script>
   </body>
 </html>

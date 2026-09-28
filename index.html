@@ -60,7 +60,7 @@
             </li>
 
             <li>
-              <a href="#about-us">About</a>
+              <a href="#overview">About</a>
             </li>
 
             <li>
@@ -80,7 +80,7 @@
             </li>
           </ul>
 
-          <button class="button-37" type="button">Explore Now</button>
+          <a class="button-37" href="#highlights">Explore Now</a>
         </nav>
       </div>
     </header>
@@ -101,7 +101,7 @@
 
       <nav class="mobile-menu">
         <a href="#overview">OVERVIEW</a>
-        <a href="#about-us">ABOUT US</a>
+        <a href="#overview">ABOUT US</a>
         <a href="#highlights">HIGHLIGHTS</a>
         <a href="#amenities">AMENITIES</a>
         <a href="#your-plans">CONFIGURATION</a>
@@ -116,7 +116,7 @@
     </section>
 
     <section class="hero-mobile">
-      <img src="assets/Hero Section Mobile.jpeg" alt="Shanti Heights" />
+      <img src="assets/Hero%20Section%20Mobile.jpeg" alt="Shanti Heights" />
     </section>
 
     <!-- ================= OVERVIEW ================= -->
@@ -142,9 +142,9 @@
             </p>
           </div>
 
-          <button
+          <a
             class="button-37"
-            type="button"
+            href="#highlights"
             style="
               background-color: #f5ddb8;
               color: black;
@@ -155,7 +155,7 @@
             "
           >
             Explore Our Visions
-          </button>
+          </a>
         </div>
 
         <img src="assets/buildingimage.png" alt="Shanti Heights Building" />
@@ -172,7 +172,7 @@
             <div>
               <label for="contact">CONTACT NO.</label>
               <input
-                type="number"
+                type="tel"
                 id="contact"
                 placeholder="Enter Your Contact Number"
               />
@@ -424,7 +424,7 @@
             <p>Quality C.P. Fittings &amp; Sanitary Ware</p>
           </span>
 
-          <button class="button-30" type="button">Explore Now</button>
+          <a class="button-30" href="#your-plans">Explore Now</a>
         </div>
 
         <!-- External Features -->
@@ -472,7 +472,7 @@
             <p>Quality C.P. Fittings &amp; Sanitary Ware</p>
           </span>
 
-          <button class="button-30" type="button">Explore Now</button>
+          <a class="button-30" href="#your-plans">Explore Now</a>
         </div>
       </div>
     </section>
@@ -489,19 +489,19 @@
         </div>
         <div class="floor-cards">
           <div class="fp-images">
-            <img src="assets/IBHK.png" alt="" />
+            <img src="assets/IBHK.png" alt="1BHK floor plan" />
             <div class="blackoverlay">
               <h2>1BHK</h2>
             </div>
           </div>
           <div class="fp-images">
-            <img src="assets/2BHK.png" alt="" />
+            <img src="assets/2BHK.png" alt="2BHK floor plan" />
             <div class="blackoverlay">
               <h2>2BHK</h2>
             </div>
           </div>
           <div class="fp-images">
-            <img src="assets/3BHK.png" alt="" />
+            <img src="assets/3BHK.png" alt="3BHK floor plan" />
             <div class="blackoverlay">
               <h2>3BHK</h2>
             </div>
@@ -553,46 +553,45 @@
           </div>
         </div>
         <div class="contact-form">
-          <div class="pad-form">
+          <form class="pad-form" action="">
             <div class="contact-heading-form">
               <h2>Send Us A Message</h2>
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label"
-                >Full Name</label
-              >
+              <label for="contact-name" class="form-label">Full Name</label>
               <input
                 type="text"
+                id="contact-name"
                 class="form-control"
                 placeholder="Enter Your Full Name"
               />
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
-                >Phone Number</label
-              >
+              <label for="contact-phone" class="form-label">Phone Number</label>
               <input
-                type="number"
+                type="tel"
+                id="contact-phone"
                 class="form-control"
                 placeholder="Enter Your Number"
               />
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label"
+              <label for="contact-email" class="form-label"
                 >Email Address</label
               >
               <input
                 type="email"
+                id="contact-email"
                 class="form-control"
                 placeholder="Enter Your Email Address"
               />
             </div>
             <div class="mb-3">
-              <label for="configuration" class="form-label">
+              <label for="contact-configuration" class="form-label">
                 Configuration Type
               </label>
 
-              <select class="form-select" id="configuration">
+              <select class="form-select" id="contact-configuration">
                 <option value="">Select Configuration</option>
                 <option value="1BHK">1 BHK</option>
                 <option value="2BHK">2 BHK</option>
@@ -605,10 +604,10 @@
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id=""
+                id="contact-consent"
                 checked
               />
-              <label class="form-check-label" for="">
+              <label class="form-check-label" for="contact-consent">
                 I agree to be contacted by SHANTI HEIGHTS and their partners via
                 WhatsApp, SMS, Phone, Email etc.</label
               >
@@ -618,9 +617,9 @@
             <p>
               We respect your privacy. Your information will only be used for
               property inquiries. By submitting this form, you agree to our
-              Privacy Policy and Terms & Conditions.
+              Privacy Policy and Terms &amp; Conditions.
             </p>
-          </div>
+          </form>
         </div>
       </div>
     </section>
@@ -665,11 +664,11 @@
 
           <ul>
             <li>
-              <a href="#intro">OVERVIEW</a>
+              <a href="#overview">OVERVIEW</a>
             </li>
 
             <li>
-              <a href="#about-us">ABOUT US</a>
+              <a href="#overview">ABOUT US</a>
             </li>
 
             <li>
@@ -685,11 +684,11 @@
             </li>
 
             <li>
-              <a href="#contact-section">CONNECTIVITY</a>
+              <a href="#contact-us">CONNECTIVITY</a>
             </li>
 
             <li>
-              <a href="#contact-section">CONTACT US</a>
+              <a href="#contact-us">CONTACT US</a>
             </li>
           </ul>
         </div>
@@ -748,7 +747,7 @@
             <i class="fa-regular fa-envelope"></i>
 
             <div>
-              <p>shantiheights2021@gmail.com</p>
+              <p>shantiheights2021<wbr />@gmail.com</p>
               <p>Email us</p>
             </div>
           </div>
@@ -829,7 +828,7 @@
           img: "assets/powerbackup.png",
         },
         {
-          title: "Passanger Lifts",
+          title: "Passenger Lifts",
           img: "assets/passanger.png",
         },
       ];
@@ -855,6 +854,13 @@
           `,
         )
         .join("");
+
+      // Close the mobile menu after picking a link
+      document.querySelectorAll(".mobile-menu a").forEach((link) =>
+        link.addEventListener("click", () => {
+          document.getElementById("menu-toggle").checked = false;
+        }),
+      );
 
       // Start Swiper
       new Swiper(".amenities-swiper", {

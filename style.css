@@ -702,7 +702,7 @@ p {
   z-index: 2;
 }
 .fp-images:hover .blackoverlay {
-  opacity: 0;
+  opacity: 1;
 }
 
 /* Touch screens have no hover, so keep the plan visible with a label strip */

@@ -1501,11 +1501,11 @@ p {
 
   .nav-mobile {
     display: block !important;
-    width: 100%;
+    width: 100% !important;
     background: #fffaf2;
-    position: sticky;
-    top: 0;
-    z-index: 9999;
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 9999 !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   }
 
